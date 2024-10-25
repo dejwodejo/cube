@@ -10,7 +10,8 @@
     "dev": "vite"
   },
   "dependencies": {
-    "three": "^0.168.0"
+    "mariadb": "^3.3.2",
+    "three": "^0.169.0"
   },
   "module": "index.ts"
 }
