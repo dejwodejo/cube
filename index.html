@@ -105,7 +105,7 @@
 
         // Cubemap
         const texureLoader = new THREE.TextureLoader();
-        texureLoader.setPath("/public/");
+        texureLoader.setPath("public/");
         const cubeGeometry = new THREE.BoxGeometry(1752, 1752, 1752);
         const cubemap = new THREE.Mesh(cubeGeometry);
 
@@ -121,7 +121,7 @@
         function createCubeFaceMaterials(floorId, cubemapId) {
             return [
                 new THREE.MeshBasicMaterial({
-                    map: texureLoader.load(`./${floorId}/${cubemapId}/px.png`),
+                    map: texureLoader.load(`${floorId}/${cubemapId}/px.png`),
                     side: THREE.BackSide,
                 }),
                 new THREE.MeshBasicMaterial({
@@ -246,7 +246,7 @@
         function createNeighbourObjects(neighboursIds) {
             return neighboursIds.map((neighbour) => {
                 const geometry = new THREE.PlaneGeometry(64, 64);
-                const texture = texureLoader.load("./arrow.png");
+                const texture = texureLoader.load("arrow.png");
                 const material = new THREE.MeshBasicMaterial({
                     map: texture,
                     side: THREE.DoubleSide,
