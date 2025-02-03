@@ -37,7 +37,7 @@ wrapper.appendChild(renderer.domElement);
 
 // Cubemap
 const texureLoader = new THREE.TextureLoader();
-texureLoader.setPath("/");
+texureLoader.setPath("./");
 const cubeGeometry = new THREE.BoxGeometry(1752, 1752, 1752);
 const cubemap = new THREE.Mesh(cubeGeometry);
 
@@ -53,7 +53,7 @@ const mouse = new THREE.Vector2();
 function createCubeFaceMaterials(floorId, cubemapId) {
 	return [
 		new THREE.MeshBasicMaterial({
-			map: texureLoader.load(`${floorId}/${cubemapId}/px.png`),
+			map: texureLoader.load(`./${floorId}/${cubemapId}/px.png`),
 			side: THREE.BackSide,
 		}),
 		new THREE.MeshBasicMaterial({
@@ -178,7 +178,7 @@ function findNeighbours(point) {
 function createNeighbourObjects(neighboursIds) {
 	return neighboursIds.map((neighbour) => {
 		const geometry = new THREE.PlaneGeometry(64, 64);
-		const texture = texureLoader.load("arrow.png");
+		const texture = texureLoader.load("./arrow.png");
 		const material = new THREE.MeshBasicMaterial({
 			map: texture,
 			side: THREE.DoubleSide,
@@ -275,6 +275,8 @@ window.addEventListener("resize", onWindowResize);
 
 function onFloorPick(event) {
 	currentPointId = "x0y0";
+	if (neighbourDirectionObjects.length !== 0) neighbourDirectionObjects = [];
+
 	const selectedFloorId = event.target.value;
 
 	switch (selectedFloorId) {
