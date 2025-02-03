@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 
 export default defineConfig({
-	base: "./", // ważne dla lokalnych plików
+	base: "./cube/",
 	build: {
 		outDir: "dist",
 		assetsDir: "assets",
