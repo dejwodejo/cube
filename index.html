@@ -73,7 +73,7 @@
         // --- MAP MANAGEMENT\
         let currentPointId = "x0y0";
         let currentFloorId = "z5";
-        let currentMap = ['x1y0', 'x1y1', 'x0y3', 'x4y0', 'x0y5', 'x3y0', 'x7y0', 'x5y0', 'x8y0', 'x2y0', 'x0y0', 'x0y4', 'x6y0'];
+        let currentMap = ['x1y0', 'x1y-1', 'x0y-3', 'x5y0', 'x0y-5', 'x4y0', 'x8y0', 'x6y0', 'x9y0', 'x2y0', 'x0y0', 'x0y-4', 'x7y0'];
 
         // --- THREEJS SCENE MANAGEMENT
         const scene = new THREE.Scene();
@@ -294,8 +294,7 @@
         function onLoad() {
             currentFloorId = "z5";
             currentPointId = "x0y0";
-            currentMap = ['x1y0', 'x1y1', 'x0y3', 'x4y0', 'x0y5', 'x3y0', 'x7y0', 'x5y0', 'x8y0', 'x2y0', 'x0y0', 'x0y4', 'x6y0'];
-
+            currentMap = ['x1y0', 'x1y-1', 'x0y-3', 'x5y0', 'x0y-5', 'x4y0', 'x8y0', 'x6y0', 'x9y0', 'x2y0', 'x0y0', 'x0y-4', 'x7y0'];
             const materials = createCubeFaceMaterials(currentFloorId, currentPointId);
             cubemap.material = materials;
 
@@ -336,7 +335,7 @@
                     currentMap = ['x26y0', 'x6y2', 'x20y2', 'x16y0', 'x18y2', 'x22y0', 'x10y2', 'x16y4', 'x4y0', 'x24y2', 'x22y4', 'x12y4', 'x14y2', 'x4y4', 'x8y0', 'x2y2', 'x0y0', 'x12y0', 'x8y4', 'x26y4'];
                     break;
                 case "z5":
-                    currentMap = ['x1y0', 'x1y1', 'x0y3', 'x4y0', 'x0y5', 'x3y0', 'x7y0', 'x5y0', 'x8y0', 'x2y0', 'x0y0', 'x0y4', 'x6y0'];
+                    currentMap = ['x1y0', 'x1y-1', 'x0y-3', 'x5y0', 'x0y-5', 'x4y0', 'x8y0', 'x6y0', 'x9y0', 'x2y0', 'x0y0', 'x0y-4', 'x7y0'];
                     break;
             }
             currentFloorId = selectedFloorId;
