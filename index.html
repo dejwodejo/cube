@@ -48,12 +48,12 @@
     <div class="legend">
         <label for="floorSelect">Wybierz piętro:</label>
         <select id="floorSelect" autocomplete="off">
-            <option value="z0" selected>Parter</option>
+            <!-- <option value="z0" selected>Parter</option>
             <option value="z1">I piętro</option>
             <option value="z2">II piętro</option>
-            <option value="z3">III piętro</option>
+            <option value="z3">III piętro</option> -->
             <option value="z4">IV piętro</option>
-            <option value="z5">V piętro</option>
+            <option value="z5" selected>V piętro</option>
         </select>
     </div>
 
@@ -65,26 +65,15 @@
         }
       }
     </script>
-    
+
     <script type="module">
         import * as THREE from "three";
         import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
         // --- MAP MANAGEMENT\
         let currentPointId = "x0y0";
-        let currentFloorId = "z0";
-        let currentMap = [
-            "x2y-1",
-            "x1y0",
-            "x1y-4",
-            "x4y0",
-            "x4y1",
-            "x1y-1",
-            "x3y0",
-            "x2y0",
-            "x0y0",
-            "x4y-1",
-        ];
+        let currentFloorId = "z5";
+        let currentMap = ['x1y0', 'x1y1', 'x0y3', 'x4y0', 'x0y5', 'x3y0', 'x7y0', 'x5y0', 'x8y0', 'x2y0', 'x0y0', 'x0y4', 'x6y0'];
 
         // --- THREEJS SCENE MANAGEMENT
         const scene = new THREE.Scene();
@@ -303,27 +292,20 @@
 
         // DOM EVENT HANLDERS
         function onLoad() {
-            currentFloorId = "z0";
+            currentFloorId = "z5";
             currentPointId = "x0y0";
-            currentMap = [
-                "x2y-1",
-                "x1y0",
-                "x1y-4",
-                "x4y0",
-                "x4y1",
-                "x1y-1",
-                "x3y0",
-                "x2y0",
-                "x0y0",
-                "x4y-1",
-            ];
+            currentMap = ['x1y0', 'x1y1', 'x0y3', 'x4y0', 'x0y5', 'x3y0', 'x7y0', 'x5y0', 'x8y0', 'x2y0', 'x0y0', 'x0y4', 'x6y0'];
 
             const materials = createCubeFaceMaterials(currentFloorId, currentPointId);
             cubemap.material = materials;
 
             const neighboursIds = findNeighbours(currentPointId);
 
-            if (neighbourDirectionObjects.length !== 0) neighbourDirectionObjects = [];
+            if (neighbourDirectionObjects.length !== 0) {
+                deleteNeighbourObjects(neighbourDirectionObjects);
+                neighbourDirectionObjects = [];
+            }
+
             neighbourDirectionObjects = createNeighbourObjects(neighboursIds);
 
             scene.add(cubemap);
@@ -343,41 +325,27 @@
 
         function onFloorPick(event) {
             currentPointId = "x0y0";
-            if (neighbourDirectionObjects.length !== 0) neighbourDirectionObjects = [];
+            if (neighbourDirectionObjects.length !== 0) {
+                deleteNeighbourObjects(neighbourDirectionObjects);
+                neighbourDirectionObjects = [];
+            }
 
             const selectedFloorId = event.target.value;
-
             switch (selectedFloorId) {
-                case "z0":
-                    currentMap = [
-                        "x2y-1",
-                        "x1y0",
-                        "x1y-4",
-                        "x4y0",
-                        "x4y1",
-                        "x1y-1",
-                        "x3y0",
-                        "x2y0",
-                        "x0y0",
-                        "x4y-1",
-                    ];
-
+                case "z4":
+                    currentMap = ['x26y0', 'x6y2', 'x20y2', 'x16y0', 'x18y2', 'x22y0', 'x10y2', 'x16y4', 'x4y0', 'x24y2', 'x22y4', 'x12y4', 'x14y2', 'x4y4', 'x8y0', 'x2y2', 'x0y0', 'x12y0', 'x8y4', 'x26y4'];
                     break;
-                case "z1" || "z2" || "z3" || "z4" || "z5":
-                    currentMap = [
-                        "x1y0",
-                        "x4y0",
-                        "x9y0",
-                        "x3y0",
-                        "x7y0",
-                        "x5y0",
-                        "x8y0",
-                        "x2y0",
-                        "x0y0",
-                        "x6y0",
-                    ];
+                case "z5":
+                    currentMap = ['x1y0', 'x1y1', 'x0y3', 'x4y0', 'x0y5', 'x3y0', 'x7y0', 'x5y0', 'x8y0', 'x2y0', 'x0y0', 'x0y4', 'x6y0'];
+                    break;
             }
             currentFloorId = selectedFloorId;
+
+            const materials = createCubeFaceMaterials(currentFloorId, currentPointId);
+            cubemap.material = materials;
+
+            const neighboursIds = findNeighbours(currentPointId);
+            neighbourDirectionObjects = createNeighbourObjects(neighboursIds);
         }
         document.getElementById("floorSelect").addEventListener("change", onFloorPick);
 
