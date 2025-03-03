@@ -2,19 +2,26 @@ import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
 const cubemapsData = {
-  z0: {
-    points: ["x3y3", "x-3y9", "x6y9", "x-3y6", "x0y3", "x3y0", "x3y6", "x0y0", "x0y9",
-            "x3y9", "x3y-3", "x0y6", "x4y-3", "x6y6"],
-  },
-  z4: {
-    points: ['x26y0', 'x6y2', 'x20y2', 'x16y0', 'x18y2', 'x22y0', 'x10y2', 'x16y4', 'x4y0',
-             'x24y2', 'x22y4', 'x12y4', 'x14y2', 'x4y4', 'x8y0', 'x2y2', 'x0y0', 'x12y0',
-             'x8y4', 'x26y4'],
-  },
-  z5: {
-    points: ['x1y0', 'x1y-1', 'x0y-3', 'x5y0', 'x0y-5', 'x4y0', 'x8y0', 'x6y0', 'x9y0',
-             'x2y0', 'x0y0', 'x0y-4', 'x7y0'],
-  }
+    z0: {
+        points: ["x3y3", "x-3y9", "x6y9", "x-3y6", "x0y3", "x3y0", "x3y6", "x0y0", "x0y9",
+             "x3y9", "x3y-3", "x0y6", "x4y-3", "x6y6"],
+    },
+    z1: { points: ["x12y-1", "x18y-1", "x10y-1", "x8y-1", "x24y-1", "x24y-3", "x22y-1", "x14y-1", "x0y3", "x3y0", "x0y0", "x20y-1", "x-2y-3", "x0y-3", "x20y-3", "x6y-1", "x16y-1", "x16y-4", "x0y5", "x4y-1", "x10y-3", "x0y4", "x25y-2"] },
+  z2: { points: ["x1y0", "x12y-1", "x11y0", "x0y-2", "x10y-1", "x8y-1", "x-3y-2", "x1y5", "x14y-1", "x0y3", "x7y-2", "x5y-2", "x11y-2", "x0y0", "x6y-1", "x7y0", "x1y4", "x13y-2", "x2y-1", "x13y0", "x1y-2", "x5y0", "x0y5", "x3y-1", "x4y-1", "x1y-1", "x0y4"] },
+    z3: {
+        points: ["x0y2", "x0y-2", "x8y-4", "x13y-3", "x4y-2", "x6y-4", "x4y-4", "x14y-2",
+            "x0y0", "x12y-4", "x9y-3", "x0y6", "x7y-3", "x2y-2", "x12y-2", "x14y-4",
+            "x6y-2", "x11y-3", "x0y4", "x8y-2", "x5y-3"]
+    },
+    z4: {
+        points: ["x6y-3", "x1y-4", "x2y-3", "x13y-4", "x3y-4", "x11y-4", "x8y-3", "x7y-2",
+          "x5y-2", "x11y-2", "x0y0", "x0y-3", "x13y-2", "x4y-3", "x5y-4", "x3y-2",
+          "x1y-2", "x7y-4", "x10y-3", "x12y-3"]
+    },
+    z5: {
+        points: ['x1y0', 'x1y-1', 'x0y-3', 'x5y0', 'x0y-5', 'x4y0', 'x8y0', 'x6y0', 'x9y0',
+            'x2y0', 'x0y0', 'x0y-4', 'x7y0'],
+    }
 };
 
 const defaultFloor = "z0"
